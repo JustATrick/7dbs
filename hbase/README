@@ -1,0 +1,7 @@
+For thrift_example.rb to work you'll need to generate the gen-rb directory
+and contents using thrift and the Hbase.thrift interface definition from your
+version of HBase
+
+e.g.
+
+thrift --gen rb ${HBASE_HOME}/src/main/resources/org/apache/hadoop/hbase/thrift/Hbase.thrift
