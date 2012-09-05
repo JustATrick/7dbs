@@ -1,0 +1,18 @@
+{
+  "_id":"_design/random",
+  "_rev":"3-a01dcb06d3cd4ebdf0f09c579d665e4b",
+  "views": {
+    "artist": {
+      "map": "function(doc) { if (doc.random) emit(doc.random, doc.name); }"
+    },
+    "album": {
+      "map": "function(doc) { (doc.albums || []).forEach(function(album) { emit(album.random, {\"artist\": doc.name, \"album\": album.name }); }); }"
+    },
+    "track": {
+      "map": "function(doc) { (doc.albums || []).forEach(function(album) { (album.tracks || []).forEach(function(track) { emit(track.random, { \"artist\": doc.name, \"album\": album.name, \"track\": track.name }); }); }); }"
+    },
+    "tag": {
+      "map": "function(doc) { (doc.albums || []).forEach(function(album) { (album.tracks || []).forEach(function(track) { (track.tags || []).forEach(function(tag) { emit(tag.random, tag.idstr); }); }); }); }"
+    }
+  }
+}
