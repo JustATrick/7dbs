@@ -1,0 +1,8 @@
+{
+  "_id":"_design/random",
+  "views": {
+    "artist": {
+      "map": "function(doc) { if (doc.random) emit(doc.random, doc.name) }"
+    }
+  }
+}
